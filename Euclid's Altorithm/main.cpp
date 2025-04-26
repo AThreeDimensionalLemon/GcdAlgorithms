@@ -1,6 +1,9 @@
 #include <iostream>
+#include <vector>
 
 int static euclid(int num1, int num2) {
+
+    //Implementation of Euclid's algorithm
 
     if (num1 == 0)
         return num2;
@@ -9,6 +12,9 @@ int static euclid(int num1, int num2) {
 }
 
 int static hand(int num1, int num2) {
+
+    //Implementation of finding GCD by hand
+
     std::vector<int> num1Divisors;
     std::vector<int> num2Divisors;
 
@@ -22,10 +28,16 @@ int static hand(int num1, int num2) {
 
         if (num2 % i == 0)
             num2Divisors.push_back(i);
-}
+    }
 
-int static lehmer(int num1, int num2) {
-    return 0;
+    for (auto i = num1Divisors.rbegin(); i != num1Divisors.rend(); i++) {
+
+        for (auto j = num2Divisors.rbegin(); j != num2Divisors.rend(); j++) {
+
+            if (*i == *j)
+                return *j;
+        }
+    }
 }
 
 int main() {
